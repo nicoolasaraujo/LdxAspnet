@@ -1,0 +1,25 @@
+.form-login{
+    border-radius: 15px;
+    background: grey;
+    padding: 20px;
+}
+
+.imagem{
+    background: turquoise;
+
+}
+
+.myImg{
+    margin-left: 0px;
+}
+
+.has-error > .error-feedback
+{
+	color:#a94442;
+}
+
+.login-failed
+{
+	display: none;
+	margin:10px;
+}

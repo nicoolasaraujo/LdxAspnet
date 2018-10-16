@@ -1,0 +1,27 @@
+.ldxBrand{
+    width: 25px;
+}
+
+
+div.panel-default.search-panel.search-panel{
+    text-align: center;
+    width: 80%;
+    background: red;
+}
+
+
+.panel-filter div.form-group{
+    padding: 10px;
+    margin: 20px;
+
+}
+
+div.radio-filter{
+    padding: 10px;    
+    margin: 10px;
+}
+
+
+select#product {
+    width: 150px;
+}
