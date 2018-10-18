@@ -41,3 +41,10 @@ div.radio-filter{
 select#product {
     width: 150px;
 }
+
+
+a.btn-success {
+    margin: 5px;
+    font-weight:600;
+}
+
