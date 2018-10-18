@@ -17,7 +17,11 @@ namespace TreinamentoAula1.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.users.ToList());
+            var users = db.users.ToList();
+            if ( users != null)
+                return View(users);
+            else
+                return View();
         }
 
         // GET: Users/Details/5

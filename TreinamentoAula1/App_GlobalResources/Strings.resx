@@ -120,6 +120,9 @@
   <data name="invalidEmail" xml:space="preserve">
     <value>* Não é um formato de email válido</value>
   </data>
+  <data name="newUser" xml:space="preserve">
+    <value>Novo Usuário</value>
+  </data>
   <data name="password" xml:space="preserve">
     <value>Senha</value>
   </data>
