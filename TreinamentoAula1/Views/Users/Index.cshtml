@@ -7,7 +7,9 @@
 <h2>Index</h2>
 
 <p>
-    <button class="btn btn-success pull-right"><strong>Novo Usuário</strong></button>
+    @Html.ActionLink("Novo Usuário", "Create", "Users", new { @class= "btn btn-success pull-right"})
+
+    
 </p>
 <table class="table">
     <tr>

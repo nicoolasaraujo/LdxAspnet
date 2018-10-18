@@ -43,6 +43,8 @@ select#product {
 }
 
 
-button.btn-success {
+a.btn-success {
     margin: 5px;
+    font-weight:600;
 }
+
