@@ -70,6 +70,15 @@ namespace TreinamentoAula1.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Novo Usuário.
+        /// </summary>
+        public static string newUser {
+            get {
+                return ResourceManager.GetString("newUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Senha.
         /// </summary>
         public static string password {
