@@ -10,18 +10,37 @@ using TreinamentoAula1.Models.Entity;
 
 namespace TreinamentoAula1.Controllers
 {
-    public class UsersController : Controller
+
+public class UsersController : Controller
     {
         private treinamento_webEntities db = new treinamento_webEntities();
 
+
+
         // GET: Users
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var users = db.users.ToList();
+        //    if ( users != null)
+        //        return View(users);
+        //    else
+        //        return View();
+        //}|
+
+        public ActionResult Index(string name, string ldapuid, string optradio, int? page)
         {
-            var users = db.users.ToList();
-            if ( users != null)
-                return View(users);
-            else
-                return View();
+            if (Session["user"] != null)
+            {
+                var users = db.users.Where(u => (string.IsNullOrEmpty(name) || (u.name.Contains(name))) &&
+                                     (string.IsNullOrEmpty(ldapuid) || u.ldap_uid.Contains(ldapuid)) &&
+                                    ()
+                                    );
+
+                ViewBag.Count = users.Count();
+                ViewBag.Page = page ?? 1;
+            return View(users.Skip(page.HasValue ? (page.Value - 1) * 10 : 0).Take(10));
+            }
+            return View("Index", "Home");
         }
 
         // GET: Users/Details/5
