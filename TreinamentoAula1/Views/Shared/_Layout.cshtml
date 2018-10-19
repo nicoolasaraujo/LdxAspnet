@@ -28,6 +28,18 @@
                         @Html.ActionLink("Braços", "Index", "Users", new { area = "" })
                     </li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right dropdown ">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="currentUser">
+                            @(((TreinamentoAula1.Models.Entity.users)Session["user"]).name)
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @*<li><a href="#">Logout</a></li>*@ 
+                            <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
