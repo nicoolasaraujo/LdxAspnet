@@ -33,13 +33,14 @@ public class UsersController : Controller
             {
                 var users = db.users.Where(u => (string.IsNullOrEmpty(name) || (u.name.Contains(name))) &&
                                      (string.IsNullOrEmpty(ldapuid) || u.ldap_uid.Contains(ldapuid)) &&
-                                    ()
-                                    );
+                                    (optradio == "actives" ? u.ative: optradio == "inactives"? !u.ative : u.ative || !u.ative )
+                                    ).ToList();
 
-                ViewBag.Count = users.Count();
+                ViewBag.Count = users.Count;
                 ViewBag.Page = page ?? 1;
             return View(users.Skip(page.HasValue ? (page.Value - 1) * 10 : 0).Take(10));
             }
+
             return View("Index", "Home");
         }
 

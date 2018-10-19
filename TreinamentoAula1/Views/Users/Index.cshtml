@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TreinamentoAula1.Models.Entity.users>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Usuários";
 }
 
 <h2>Index</h2>
@@ -9,11 +9,7 @@
 
 
 
-<p>
-    @Html.ActionLink("Novo Usuário", "Create", "Users", new { @class = "btn btn-success pull-right" })
 
-
-</p>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 ">
@@ -42,7 +38,7 @@
                                 <div class="radio">
                                     <label class="radio-inline control-label">
                                         @*<input type="radio" name="optradio" value="1">*@
-                                        @Html.RadioButton("optradio","1") Ativos
+                                        @Html.RadioButton("optradio","actives") Ativos
                                     </label>
                                 </div>
                             </div>
@@ -51,7 +47,7 @@
                             <div class="form-group">
                                 <div class="radio">
                                     <label class="radio-inline control-label">
-                                        @Html.RadioButton("optradio","0") AtivosInvativos
+                                        @Html.RadioButton("optradio", "inactives") Inativos
                                     </label>
                                 </div>
                             </div>
@@ -60,7 +56,7 @@
                             <div class="form-group">
                                 <div class="radio">
                                     <label class="radio-inline control-label">
-                                        @Html.RadioButton("optradio", "-1") Todos
+                                        @Html.RadioButton("optradio", "all") Todos
                                     </label>
                                 </div>
                             </div>
@@ -69,9 +65,9 @@
                             <button type="submit" id="filter" class="btn btn-default btn-lg text-rigth">
                                 <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
                             </button>
-                            <button type="button" id="clear" class="btn btn-default btn-lg">
+                            <a id="clear" class="btn btn-default btn-lg" href="Users/Index">
                                 <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                            </button>
+                            </a>
                         </div>
                         }
                     </div>
@@ -79,6 +75,10 @@
 
             </div>
             </div>
+            <p>
+                @Html.ActionLink("Novo Usuário", "Create", "Users", new { @class = "btn btn-success pull-right" })
+
+            </p>
             <table class="table">
                 <tr>
                     <th>

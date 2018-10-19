@@ -7,8 +7,11 @@ namespace TreinamentoAula1.Models
 {
     public enum ActiveFiler : int
     {
+        //Usuário Ativos
         ATIVOS = 0,
+        //Usuários Inativos
         INATIVOS = 1,
+        //Todos Usuários
         TODOS = -1
     }
 }
