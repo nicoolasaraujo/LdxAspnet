@@ -29,6 +29,8 @@ public class UsersController : Controller
 
         public ActionResult Index(string name, string ldapuid, string optradio, int? page)
         {
+            //ViewBag.Filter = new { Name = !string.IsNullOrEmpty(name) ? name : "", Ldapuid = !string.IsNullOrEmpty(ldapuid) ? ldapuid : "", Optradio = !string.IsNullOrEmpty(optradio) ? optradio : "" };
+            ViewBag.Filter = new string[] { !string.IsNullOrEmpty(name) ? name : "", !string.IsNullOrEmpty(ldapuid) ? ldapuid : "", !string.IsNullOrEmpty(optradio) ? optradio : "" };
             if (Session["user"] != null)
             {
                 var users = db.users.Where(u => (string.IsNullOrEmpty(name) || (u.name.Contains(name))) &&
@@ -38,7 +40,8 @@ public class UsersController : Controller
 
                 ViewBag.Count = users.Count;
                 ViewBag.Page = page ?? 1;
-            return View(users.Skip(page.HasValue ? (page.Value - 1) * 10 : 0).Take(10));
+                
+            return View(users.Skip(page.HasValue ? (page.Value - 1) * 3 : 0).Take(3));
             }
 
             return View("Index", "Home");

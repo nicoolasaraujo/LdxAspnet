@@ -22,110 +22,143 @@
                         @using (Html.BeginForm("Index", "Users", FormMethod.Post, new { @class = "form-inline" }))
                         {
                         <!-- Campos de texto -->
-                        <div class="form-group col-sm-2 col-sm-offset-4">
-                            <label for="name" class="control-label">Nome:</label>
-                            @*<input type="text" id="name" class="form-control">*@
-                            @Html.TextBox("name", String.Empty, new { @class = "form-control" })
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <label for="ldap-uid" class="control-label">Ldap Uid:</label>
-                            @*<input type="text" id="ldap-uid" class="form-control">*@
-                            @Html.TextBox("ldap-uid", String.Empty, new { @class = "form-control" })
-                        </div>
+                            <div class="form-group col-sm-2 col-sm-offset-4">
+                                <label for="name" class="control-label">Nome:</label>
+                                @*<input type="text" id="name" class="form-control">*@
+                                @Html.TextBox("name", String.Empty, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <label for="ldapuid" class="control-label">Ldap Uid:</label>
+                                @*<input type="text" id="ldap-uid" class="form-control">*@
+                                @Html.TextBox("ldapuid", String.Empty, new { @class = "form-control" })
+                            </div>
                         <!-- Radio buttons -->
-                        <div class="form-group radio-filter">
-                            <div class="form-group">
-                                <div class="radio">
-                                    <label class="radio-inline control-label">
-                                        @*<input type="radio" name="optradio" value="1">*@
-                                        @Html.RadioButton("optradio","actives") Ativos
-                                    </label>
+                            <div class="form-group radio-filter">
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label class="radio-inline control-label">
+                                            @*<input type="radio" name="optradio" value="1">*@
+                                            @Html.RadioButton("optradio", "actives") Ativos
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group radio-filter">
-                            <div class="form-group">
-                                <div class="radio">
-                                    <label class="radio-inline control-label">
-                                        @Html.RadioButton("optradio", "inactives") Inativos
-                                    </label>
+                            <div class="form-group radio-filter">
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label class="radio-inline control-label">
+                                            @Html.RadioButton("optradio", "inactives") Inativos
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group radio-filter">
-                            <div class="form-group">
-                                <div class="radio">
-                                    <label class="radio-inline control-label">
-                                        @Html.RadioButton("optradio", "all") Todos
-                                    </label>
+                            <div class="form-group radio-filter">
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label class="radio-inline control-label">
+                                            @Html.RadioButton("optradio", "all") Todos
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row text-right my-footer">
-                            <button type="submit" id="filter" class="btn btn-default btn-lg text-rigth">
-                                <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
-                            </button>
-                            <a id="clear" class="btn btn-default btn-lg" href="Users/Index">
-                                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                            </a>
-                        </div>
+                            <div class="row text-right my-footer">
+                                <button type="submit" id="filter" class="btn btn-default btn-lg text-rigth">
+                                    <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+                                </button>
+                                <a id="clear" class="btn btn-default btn-lg" href="Users/Index">
+                                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                </a>
+                            </div>
                         }
                     </div>
                 </div>
 
             </div>
-            </div>
-            <p>
-                @Html.ActionLink("Novo Usuário", "Create", "Users", new { @class = "btn btn-success pull-right" })
-
-            </p>
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ldap_uid)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ative)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.password)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ldap_uid)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ative)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.password)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                        </td>
-                    </tr>
-                }
-
-            </table>
         </div>
+        <p>
+            @Html.ActionLink("Novo Usuário", "Create", "Users", new { @class = "btn btn-success pull-right" })
+
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ldap_uid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ative)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.password)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ldap_uid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ative)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <nav aria-label="Page navigation" class="pull-right">
+            <ul class="pagination">
+                <li class="page-item">
+                    @{
+                       var data_filter = new
+                        {
+                                name = ViewBag.Filter[0],
+                                ldapuid = ViewBag.Filter[1],
+                                optradio = ViewBag.Filter[2],
+                                page = ViewBag.Page > 1 ? ViewBag.Page - 1 : 1
+
+                        };
+                        @Html.ActionLink("Next", "Index", data_filter, new { @class = "page-link" })
+                    }
+                </li>
+                <li class="page-item" id="number_page">
+                    <a>@ViewBag.Page</a>
+                </li>
+                <li class="page-item">
+                    @*< class="page-link" href="#">Next</a>*@
+                    @{ 
+                        data_filter = new
+                        {
+                            name = ViewBag.Filter[0],
+                            ldapuid = ViewBag.Filter[1],
+                            optradio = ViewBag.Filter[2],
+                            page = ViewBag.Page + 1
+
+                        };
+                    }
+                    @Html.ActionLink("Next", "Index", data_filter, new { @class = "page-link" })
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
