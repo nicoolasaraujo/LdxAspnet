@@ -18,6 +18,12 @@ namespace TreinamentoAula1
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Pagination",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Users", action = "Index", name = UrlParameter.Optional, ldapldapuid = UrlParameter.Optional, optradio = UrlParameter.Optional, page = UrlParameter.Optional }
+            );
         }
     }
 }

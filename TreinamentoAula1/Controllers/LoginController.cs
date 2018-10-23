@@ -26,13 +26,19 @@ namespace TreinamentoAula1.Controllers
                 var user = db.users.Where(u => u.email == login.Username && u.password == login.Password);
                 if (user.Any())
                 {
-                    Session["user"] = user;
+                    Session["user"] = user.First();
                     return RedirectToAction("Index", "Users");
                 }
                 ModelState.AddModelError(string.Empty, "Usuário ou senha incoretos");
 
             }
             return View("Index", login);
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return View("Index");
         }
     }
 }
