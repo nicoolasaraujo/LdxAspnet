@@ -61,6 +61,15 @@ namespace TreinamentoAula1.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Descrição do Braço.
+        /// </summary>
+        public static string descriptionBranch {
+            get {
+                return ResourceManager.GetString("descriptionBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Email.
         /// </summary>
         public static string email {
@@ -88,11 +97,29 @@ namespace TreinamentoAula1.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Merge Executado.
+        /// </summary>
+        public static string mergeExecuted {
+            get {
+                return ResourceManager.GetString("mergeExecuted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Nome.
         /// </summary>
         public static string name {
             get {
                 return ResourceManager.GetString("name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nome do Braço.
+        /// </summary>
+        public static string nameBranch {
+            get {
+                return ResourceManager.GetString("nameBranch", resourceCulture);
             }
         }
         
@@ -106,11 +133,29 @@ namespace TreinamentoAula1.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Braço Pai.
+        /// </summary>
+        public static string parentBranch {
+            get {
+                return ResourceManager.GetString("parentBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Senha.
         /// </summary>
         public static string password {
             get {
                 return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Produto.
+        /// </summary>
+        public static string product {
+            get {
+                return ResourceManager.GetString("product", resourceCulture);
             }
         }
         

@@ -192,6 +192,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Branches.cs" />
     <Compile Include="Models\DataContract\Login.cs" />
     <Compile Include="Models\Entity\branches.cs">
       <DependentUpon>TreinamentoWeb.tt</DependentUpon>
@@ -218,6 +219,7 @@
       <DependentUpon>TreinamentoWeb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MD_Enumerator.cs" />
+    <Compile Include="Models\MetaData\BranchesMetaData.cs" />
     <Compile Include="Models\MetaData\UserMetaData.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
