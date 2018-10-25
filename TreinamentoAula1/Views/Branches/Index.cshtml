@@ -1,13 +1,10 @@
-﻿@model IEnumerable<TreinamentoAula1.Models.Entity.users>
+﻿@model IEnumerable<TreinamentoAula1.Models.Entity.branches>
 
 @{
-    ViewBag.Title = "Usuários";
+    ViewBag.Title = "Braços";
 }
 
 <h2>Index</h2>
-
-
-
 
 
 <div class="container-fluid">
@@ -23,16 +20,21 @@
                         {
                         <!-- Campos de texto -->
                             <div class="form-group col-sm-2 col-sm-offset-4">
-                                <label for="name" class="control-label">Nome:</label>
+                                <label for="name_branch" class="control-label">Nome:</label>
                                 @*<input type="text" id="name" class="form-control">*@
-                                @Html.TextBox("name", String.Empty, new { @class = "form-control" })
+                                @Html.TextBox("name_branch", String.Empty, new { @class = "form-control" })
                             </div>
                             <div class="form-group col-sm-2">
-                                <label for="ldapuid" class="control-label">Ldap Uid:</label>
-                                @*<input type="text" id="ldap-uid" class="form-control">*@
-                                @Html.TextBox("ldapuid", String.Empty, new { @class = "form-control" })
+                                <label for="description" class="control-label">Descrição:</label>
+                                @Html.TextBox("description", String.Empty, new { @class = "form-control" })
                             </div>
-                        <!-- Radio buttons -->
+                            <div class="form-group col-sm-2">
+                                <label for="product" class="control-label">Produto:</label>
+                                @Html.TextBox("product", String.Empty, new { @class = "form-control" })
+                            </div>
+
+                            <!-- Radio buttons -->
+                                
                             <div class="form-group radio-filter">
                                 <div class="form-group">
                                     <div class="radio">
@@ -61,6 +63,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="row text-right my-footer">
                                 <button type="submit" id="filter" class="btn btn-default btn-lg text-rigth">
                                     <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
@@ -85,78 +89,74 @@
                     @Html.DisplayNameFor(model => model.name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.email)
+                    @Html.DisplayNameFor(model => model.description)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ldap_uid)
+                    @Html.DisplayNameFor(model => model.merge_executed)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ative)
+                    @Html.DisplayNameFor(model => model.parent_branch)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.password)
+                    @Html.DisplayNameFor(model => model.type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.product)
                 </th>
                 <th></th>
             </tr>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ldap_uid)
-                    </td>
-                    <td>
-                        @{ 
-                            var activeClass = "label-danger";
-                            var text = "Inativo";
-                            if (item.ative)
-                            {
-                                activeClass = "label-success" ;
-                                text = "Ativo";
-                            }
-                        }
-                        <span class="label @activeClass"> @text</span>
-                        @*@Html.DisplayFor(modelItem => item.ative)*@
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.password)
-                    </td>
-                    <td>
-                        <div  class="text-center pull-right">
-                            <a href="@Url.Action("Edit", new { id = item.id})" class="btn btn-default">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </a>
-                            <a href="@Url.Action("Details", new { id = item.id})" class="btn btn-default">
-                                <span class="glyphicon glyphicon-list-alt"></span>
-                            </a>
-                            <a href="@Url.Action("Delete", new { id = item.id})" class="btn btn-default">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            }
+            @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.merge_executed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.parent_branch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product)
+                </td>
+                <td>
+                    <div class="text-center pull-right">
+                        <a href="@Url.Action("Edit", new { id = item.id})" class="btn btn-default">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="@Url.Action("Details", new { id = item.id})" class="btn btn-default">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                        </a>
+                        <a href="@Url.Action("Delete", new { id = item.id})" class="btn btn-default">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+}
 
         </table>
-       
-         <nav aria-label="Page navigation" class="pull-right">
+        <nav aria-label="Page navigation" class="pull-right">
             <ul class="pagination">
                 <li class="page-item">
                     @{
-                       var data_filter = new
-                        {
-                                name = ViewBag.Filter[0],
-                                ldapuid = ViewBag.Filter[1],
-                                optradio = ViewBag.Filter[2],
-                                page = ViewBag.Page > 1 ? ViewBag.Page - 1 : 1
+                        var data_filter = String.Empty;
+                        //
 
-                        };
+                        //new{
+                        //    name = ViewBag.Filter[0],
+                        //    ldapuid = ViewBag.Filter[1],
+                        //    optradio = ViewBag.Filter[2],
+                        //    page = ViewBag.Page > 1 ? ViewBag.Page - 1 : 1
+
+                        //};
                         @Html.ActionLink("Next", "Index", data_filter, new { @class = "page-link" })
                     }
                 </li>
@@ -164,18 +164,18 @@
                     <a>@ViewBag.Page</a>
                 </li>
                 <li class="page-item">
-                    @*< class="page-link" href="#">Next</a>*@
-                    @{ 
-                        data_filter = new
-                        {
-                            name = ViewBag.Filter[0],
-                            ldapuid = ViewBag.Filter[1],
-                            optradio = ViewBag.Filter[2],
-                            page = ViewBag.Page + 1
+                    
+                    @{
+                        data_filter = null;
+                        //{
+                        //    name = ViewBag.Filter[0],
+                        //    ldapuid = ViewBag.Filter[1],
+                        //    optradio = ViewBag.Filter[2],
+                        //    page = ViewBag.Page + 1
 
-                        };
+                        //};
                     }
-                    @Html.ActionLink("Next", "Index", data_filter, new { @class = "page-link" })
+                   @Html.ActionLink("Next", "Index", data_filter, new { @class = "page-link" })
                 </li>
             </ul>
         </nav>
