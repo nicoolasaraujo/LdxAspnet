@@ -15,9 +15,29 @@ namespace TreinamentoAula1.Controllers
         private treinamento_webEntities db = new treinamento_webEntities();
 
         // GET: Branches
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View(db.branches.ToList());
+        //}
+        public ActionResult Index(string name_branch, string description, string product, string optradio, int? page)
         {
-            return View(db.branches.ToList());
+            //ViewBag.Filter = new { Name = !string.IsNullOrEmpty(name) ? name : "", Ldapuid = !string.IsNullOrEmpty(ldapuid) ? ldapuid : "", Optradio = !string.IsNullOrEmpty(optradio) ? optradio : "" };
+            ViewBag.Filter = new string[] { !string.IsNullOrEmpty(name_branch) ? name_branch : "", !string.IsNullOrEmpty(description) ? description : "", !string.IsNullOrEmpty(description) ? description : "", !string.IsNullOrEmpty(optradio) ? optradio : "" };
+            if (Session["user"] != null)
+            {
+                var users = db.branches.Where(u => (string.IsNullOrEmpty(name_branch) || (u.name.Contains(name_branch)))).ToList();
+                                    //&& (string.IsNullOrEmpty(description) || u.description.Contains(description)) &&
+                                    //(optradio == "actives" ? u.ative : optradio == "inactives" ? !u.ative : u.ative || !u.ative)
+                                    //)
+                                    //.ToList();
+
+                ViewBag.Count = users.Count;
+                ViewBag.Page = page ?? 1;
+
+                return View(users.Skip(page.HasValue ? (page.Value - 1) * 3 : 0).Take(3));
+            }
+
+            return View("Index", "Home");
         }
 
         // GET: Branches/Details/5

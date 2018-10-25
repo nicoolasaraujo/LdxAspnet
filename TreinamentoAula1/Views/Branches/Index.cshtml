@@ -16,7 +16,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-row panel-filter">
-                        @using (Html.BeginForm("Index", "Users", FormMethod.Post, new { @class = "form-inline" }))
+                        @using (Html.BeginForm("Index", "Branches", FormMethod.Post, new { @class = "form-inline" }))
                         {
                         <!-- Campos de texto -->
                             <div class="form-group col-sm-2 col-sm-offset-4">
@@ -34,36 +34,36 @@
                             </div>
 
                             <!-- Radio buttons -->
-                                
-                            <div class="form-group radio-filter">
-                                <div class="form-group">
-                                    <div class="radio">
-                                        <label class="radio-inline control-label">
-                                            @*<input type="radio" name="optradio" value="1">*@
-                                            @Html.RadioButton("optradio", "actives") Ativos
-                                        </label>
+                            <div class="form-group">
+                                <div class="form-group radio-filter">
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label class="radio-inline control-label">
+                                                @*<input type="radio" name="optradio" value="1">*@
+                                                @Html.RadioButton("optradio", "actives") Merge realizado
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group radio-filter">
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label class="radio-inline control-label">
+                                                @Html.RadioButton("optradio", "inactives") Merge não realizado
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group radio-filter">
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label class="radio-inline control-label">
+                                                @Html.RadioButton("optradio", "all") Todos
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group radio-filter">
-                                <div class="form-group">
-                                    <div class="radio">
-                                        <label class="radio-inline control-label">
-                                            @Html.RadioButton("optradio", "inactives") Inativos
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group radio-filter">
-                                <div class="form-group">
-                                    <div class="radio">
-                                        <label class="radio-inline control-label">
-                                            @Html.RadioButton("optradio", "all") Todos
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
 
                             <div class="row text-right my-footer">
                                 <button type="submit" id="filter" class="btn btn-default btn-lg text-rigth">
