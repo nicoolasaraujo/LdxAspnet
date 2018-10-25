@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="invalidEmail" xml:space="preserve">
     <value>* Não é um formato de email válido</value>
+  </data>
+  <data name="ldap_uid" xml:space="preserve">
+    <value>LDAP_UID</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Nome</value>
   </data>
   <data name="newUser" xml:space="preserve">
     <value>Novo Usuário</value>

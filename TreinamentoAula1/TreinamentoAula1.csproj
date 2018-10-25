@@ -218,6 +218,8 @@
       <DependentUpon>TreinamentoWeb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MD_Enumerator.cs" />
+    <Compile Include="Models\MetaData\UserMetaData.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
