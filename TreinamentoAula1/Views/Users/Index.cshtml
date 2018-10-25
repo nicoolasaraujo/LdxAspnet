@@ -112,21 +112,40 @@
                         @Html.DisplayFor(modelItem => item.ldap_uid)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ative)
+                        @{ 
+                            var activeClass = "label-danger";
+                            var text = "Inativo";
+                            if (item.ative)
+                            {
+                                activeClass = "label-success" ;
+                                text = "Ativo";
+                            }
+                        }
+                        <span class="label @activeClass"> @text</span>
+                        @*@Html.DisplayFor(modelItem => item.ative)*@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.password)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        <div  class="text-center pull-right">
+                            <a href="@Url.Action("Edit", new { id = item.id})" class="btn btn-default">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <a href="@Url.Action("Details", new { id = item.id})" class="btn btn-default">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                            </a>
+                            <a href="@Url.Action("Delete", new { id = item.id})" class="btn btn-default">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </div>
                     </td>
                 </tr>
             }
 
         </table>
-        <nav aria-label="Page navigation" class="pull-right">
+       
+         <nav aria-label="Page navigation" class="pull-right">
             <ul class="pagination">
                 <li class="page-item">
                     @{

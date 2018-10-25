@@ -1,0 +1,183 @@
+﻿@model IEnumerable<TreinamentoAula1.Models.Entity.branches>
+
+@{
+    ViewBag.Title = "Braços";
+}
+
+<h2>Index</h2>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 ">
+            <div class="panel panel-default .search-panel">
+                <div class="panel-heading ">
+                    <h3 class="panel-title">Filtros</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-row panel-filter">
+                        @using (Html.BeginForm("Index", "Branches", FormMethod.Post, new { @class = "form-inline" }))
+                        {
+                        <!-- Campos de texto -->
+                            <div class="form-group col-sm-2 col-sm-offset-4">
+                                <label for="name_branch" class="control-label">Nome:</label>
+                                @*<input type="text" id="name" class="form-control">*@
+                                @Html.TextBox("name_branch", String.Empty, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <label for="description" class="control-label">Descrição:</label>
+                                @Html.TextBox("description", String.Empty, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <label for="product" class="control-label">Produto:</label>
+                                @Html.TextBox("product", String.Empty, new { @class = "form-control" })
+                            </div>
+
+                            <!-- Radio buttons -->
+                            <div class="form-group">
+                                <div class="form-group radio-filter">
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label class="radio-inline control-label">
+                                                @*<input type="radio" name="optradio" value="1">*@
+                                                @Html.RadioButton("optradio", "actives") Merge realizado
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group radio-filter">
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label class="radio-inline control-label">
+                                                @Html.RadioButton("optradio", "inactives") Merge não realizado
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group radio-filter">
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label class="radio-inline control-label">
+                                                @Html.RadioButton("optradio", "all") Todos
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row text-right my-footer">
+                                <button type="submit" id="filter" class="btn btn-default btn-lg text-rigth">
+                                    <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+                                </button>
+                                <a id="clear" class="btn btn-default btn-lg" href="Users/Index">
+                                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <p>
+            @Html.ActionLink("Novo Usuário", "Create", "Users", new { @class = "btn btn-success pull-right" })
+
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.merge_executed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.parent_branch)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.product)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.merge_executed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.parent_branch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product)
+                </td>
+                <td>
+                    <div class="text-center pull-right">
+                        <a href="@Url.Action("Edit", new { id = item.id})" class="btn btn-default">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="@Url.Action("Details", new { id = item.id})" class="btn btn-default">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                        </a>
+                        <a href="@Url.Action("Delete", new { id = item.id})" class="btn btn-default">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+}
+
+        </table>
+        <nav aria-label="Page navigation" class="pull-right">
+            <ul class="pagination">
+                <li class="page-item">
+                    @{
+                        var data_filter = String.Empty;
+                        //
+
+                        //new{
+                        //    name = ViewBag.Filter[0],
+                        //    ldapuid = ViewBag.Filter[1],
+                        //    optradio = ViewBag.Filter[2],
+                        //    page = ViewBag.Page > 1 ? ViewBag.Page - 1 : 1
+
+                        //};
+                        @Html.ActionLink("Next", "Index", data_filter, new { @class = "page-link" })
+                    }
+                </li>
+                <li class="page-item" id="number_page">
+                    <a>@ViewBag.Page</a>
+                </li>
+                <li class="page-item">
+                    
+                    @{
+                        data_filter = null;
+                        //{
+                        //    name = ViewBag.Filter[0],
+                        //    ldapuid = ViewBag.Filter[1],
+                        //    optradio = ViewBag.Filter[2],
+                        //    page = ViewBag.Page + 1
+
+                        //};
+                    }
+                   @Html.ActionLink("Next", "Index", data_filter, new { @class = "page-link" })
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
